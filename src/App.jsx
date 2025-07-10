@@ -1,23 +1,8 @@
-
 import React, { useState } from 'react';
-
-
 import "./App.css"
 
-/**
- * ListItem Component
- * -------------------
- * Use Case: To display a single item in the list.
- * This is a "presentational" or "dumb" component because it doesn't manage any state.
- * Its only job is to receive data (via props) and display it.
- *
- * @param {object} props - The properties passed from the parent component.
- * @param {string} props.item - The text of the list item to display.
- */
+
 const ListItem = ({ item }) => {
-  // This component returns a single list item element (<li>).
-  // The text of the item is rendered inside the <li>.
-  // The `className` attribute is used to apply Tailwind CSS classes for styling.
   return (
     <li className="bg-gray-50 p-3 rounded-md shadow-sm text-gray-700 flex items-center justify-between">
       {item}
@@ -26,31 +11,11 @@ const ListItem = ({ item }) => {
 };
 
 
-/**
- * List Component
- * --------------
- * Use Case: To display the entire list of items.
- * This component takes an array of items and renders a ListItem for each one.
- *
- * @param {object} props - The properties passed from the parent component.
- * @param {string[]} props.items - An array of strings to be rendered as a list.
- */
+
 const List = ({ items }) => {
-  // This component returns an unordered list (<ul>).
-  // The `className` attribute styles the <ul> element.
   return (
     <ul className="list-none p-0 space-y-2">
-      {/*
-        The .map() method is used to iterate over the 'items' array.
-        For each 'item' in the array, it creates and returns a <ListItem> component.
-      */}
       {items.map((item, index) => (
-        // The <ListItem> component is used to render the individual item.
-        // `item={item}` passes the current item's text down as a prop.
-        // `key={index}` is a special, required prop in React for lists.
-        // It helps React identify which items have changed, are added, or are removed,
-        // which improves performance during re-renders. Using the index is okay for
-        // simple lists where items are not re-ordered, but a unique ID is better practice.
         <ListItem key={index} item={item} />
       ))}
     </ul>
@@ -58,13 +23,7 @@ const List = ({ items }) => {
 };
 
 
-/**
- * App Component
- * -------------
- * Use Case: The main component of the application.
- * This is a "container" or "smart" component because it manages the application's state and logic,
- * such as handling user input and updating the list.
- */
+
 const App = () => {
   // State for the input field's current value.
   // `inputValue` stores the text the user is typing.
